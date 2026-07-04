@@ -7,11 +7,11 @@ import os
 # region 🎨 1. PENGATURAN TAMPILAN & CSS (ABAIKAN BAGIAN INI)
 st.set_page_config(page_title="Smart Hospital Patient Navigator", page_icon="🏥", layout="wide")
 
+st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-html, body, [class*="css"] { fontst.markdown("""
--family: 'Inter', sans-serif; }
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 #MainMenu { visibility: hidden; }
 header[data-testid="stHeader"] { display: none; }
 .stDeployButton { display: none; }
@@ -46,7 +46,7 @@ bundle        = load_model()
 model         = bundle['model']
 scaler        = bundle['scaler']
 features      = bundle['features']
-cols_to_scale = bundle['cols_to_scale']
+cols_to_scalw = bundle['cols_to_scalw']
 dept_map_inv  = bundle['dept_map_inv']
 gender_map    = bundle['gender_map']
 temp_map      = bundle['temp_map']
