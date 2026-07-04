@@ -226,7 +226,7 @@ with st.form("triage_form"):
     with col_gen:
         gender = ... # TODO 18: Gunakan st.selectbox("Gender", options=['Female', 'Male'])
 
-    submitted = ... # TODO 19: Gunakan st.form_submit_button("Get AI Recommendation →")
+    submitted =st.form_submit_button("Get AI Recommendation →")
 
 # ── 🤖 Prediksi Machine Learning ──────────────────────────────────────────────
 if submitted:
