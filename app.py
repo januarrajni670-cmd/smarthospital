@@ -87,6 +87,7 @@ DEPT_INFO = {
     },
 }
 
+# ── Hero Header ───────────────────────────────────────────────────────────────
 st.markdown("""
 <div style="background:linear-gradient(135deg,#1e3a8a 0%,#1a56db 60%,#0ea5e9 100%);
             padding:3rem 2rem 2.5rem;margin:-1rem -1rem 2rem;text-align:center;">
@@ -127,21 +128,21 @@ with st.form("triage_form"):
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        fever            = st.checkbox('Fever')
-        cough            = st.checkbox('cough')
+        fever            = st.checkbox("🌡️  Fever")
+        cough            = st.checkbox("🤧  Cough")
     with c2:
-        headache         = ... # TODO 3: Buat checkbox "🤕  Headache"
-        chest_pain       = ... # TODO 4: Buat checkbox "💔  Chest Pain"
+        headache         = st.checkbox("🤕  Headache")
+        chest_pain       = st.checkbox("💔  Chest Pain")
     with c3:
-        stomach_pain     = ... # TODO 5: Buat checkbox "🤢  Stomach Pain"
-        shortness_breath = ... # TODO 6: Buat checkbox "😮‍💨  Shortness of Breath"
+        stomach_pain     = st.checkbox("🤢  Stomach Pain")
+        shortness_breath = st.checkbox("😮‍💨  Shortness of Breath")
     with c4:
-        nausea_vomiting  = ... # TODO 7: Buat checkbox "🤮  Nausea / Vomiting"
-        dizziness        = ... # TODO 8: Buat checkbox "😵  Dizziness"
+        nausea_vomiting  = st.checkbox("🤮  Nausea / Vomiting")
+        dizziness        = st.checkbox("😵  Dizziness")
 
     c5, _, _, _ = st.columns(4)
     with c5:
-        skin_rash        = ... # TODO 9: Buat checkbox "🔴  Skin Rash"
+        skin_rash = st.checkbox("🔴  Skin Rash")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -162,7 +163,7 @@ with st.form("triage_form"):
     with col_cc:
         chief_complaint = st.selectbox("Chief complaint", options=list(cc_map.keys()))
     with col_dur:
-        duration = ... # TODO 11: Gunakan st.selectbox("Duration", options=list(dur_map.keys()), index=1)
+        duration = st.selectbox("Duration", options=list(dur_map.keys()), index=1)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -181,9 +182,9 @@ with st.form("triage_form"):
 
     col_temp, col_hr = st.columns(2)
     with col_temp:
-        temperature_level = ... # TODO 12: Buat selectbox "Temperature" dengan options=list(temp_map.keys()), index=1
+        temperature_level = st.selectbox("Temperature", options=list(temp_map.keys()), index=1)
     with col_hr:
-        heart_rate_level  = ... # TODO 13: Buat selectbox "Heart rate" dengan options=list(hr_map.keys()), index=1
+        heart_rate_level  = st.selectbox("Heart rate", options=list(hr_map.keys()), index=1)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -201,9 +202,9 @@ with st.form("triage_form"):
     # endregion
 
     ch1, ch2, ch3, _ = st.columns(4)
-    with ch1: hypertension  = ... # TODO 14: Buat checkbox "🩺 High Blood Pressure"
-    with ch2: heart_disease = ... # TODO 15: Buat checkbox "❤️ Heart Disease"
-    with ch3: asthma        = ... # TODO 16: Buat checkbox "💨 Asthma"
+    with ch1: hypertension  = st.checkbox("🩺 High Blood Pressure")
+    with ch2: heart_disease = st.checkbox("❤️ Heart Disease")
+    with ch3: asthma        = st.checkbox("💨 Asthma")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -224,46 +225,39 @@ with st.form("triage_form"):
     with col_age:
         age    = st.number_input("Age", min_value=1, max_value=120, value=35)
     with col_gen:
-        gender = ... # TODO 18: Gunakan st.selectbox("Gender", options=['Female', 'Male'])
+        gender = st.selectbox("Gender", options=['Female', 'Male'])
 
-    submitted =st.form_submit_button("Get AI Recommendation →")
+    submitted = st.form_submit_button("Get AI Recommendation →")
 
 # ── 🤖 Prediksi Machine Learning ──────────────────────────────────────────────
 if submitted:
-    # TODO 20: Hapus tanda # pada dictionary di bawah dan lengkapi data int(...) sesuai variabel di atas
+    # Student bisa fokus melihat bagaimana input pengguna dikonversi menjadi data Pandas
     patient = pd.DataFrame([{
         'age'              : age,
         'gender'           : gender_map.get(gender, 0),
         'fever'            : int(fever),
         'cough'            : int(cough),
-        # 'headache'         : int(...),
-        # 'chest_pain'       : int(...),
-        # 'stomach_pain'     : int(...),
-        # 'shortness_breath' : int(...),
-        # 'nausea_vomiting'  : int(...),
-        # 'dizziness'        : int(...),
-        # 'skin_rash'        : int(...),
-        # 'temperature_level': temp_map.get(temperature_level, 1),
-        # 'heart_rate_level' : hr_map.get(heart_rate_level, 1),
-        # 'duration'         : dur_map.get(duration, 1),
-        # 'asthma'           : int(...),
-        # 'hypertension'     : int(...),
-        # 'heart_disease'    : int(...),
-        # 'chief_complaint'  : cc_map.get(chief_complaint, 9)
+        'headache'         : int(headache),
+        'chest_pain'       : int(chest_pain),
+        'stomach_pain'     : int(stomach_pain),
+        'shortness_breath' : int(shortness_breath),
+        'nausea_vomiting'  : int(nausea_vomiting),
+        'dizziness'        : int(dizziness),
+        'skin_rash'        : int(skin_rash),
+        'temperature_level': temp_map.get(temperature_level, 1),
+        'heart_rate_level' : hr_map.get(heart_rate_level, 1),
+        'duration'         : dur_map.get(duration, 1),
+        'asthma'           : int(asthma),
+        'hypertension'     : int(hypertension),
+        'heart_disease'    : int(heart_disease),
+        'chief_complaint'  : cc_map.get(chief_complaint, 9)
     }])
 
-    # Proses scaling (Biarkan bagian ini)
     patient_scaled = patient.copy()
     patient_scaled[cols_to_scale] = scaler.transform(patient[cols_to_scale])
 
-    # TODO 21: Panggil model untuk melakukan prediksi
-    pred       = ... # TODO: Ketik model.predict(patient_scaled[features])[0]
-    proba      = ... # TODO: Ketik model.predict_proba(patient_scaled[features])[0]
-    
-    # -------------------------------------------------------------------------
-    # AREA KERJA STUDENT BERAKHIR DI SINI. BAGIAN BAWAH AKAN MENAMPILKAN HASIL!
-    # -------------------------------------------------------------------------
-    
+    pred       = model.predict(patient_scaled[features])[0]
+    proba      = model.predict_proba(patient_scaled[features])[0]
     dept_name  = dept_map_inv[pred]
     confidence = proba[pred] * 100
     info       = DEPT_INFO[dept_name]
