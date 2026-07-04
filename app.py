@@ -46,7 +46,7 @@ bundle        = load_model()
 model         = bundle['model']
 scaler        = bundle['scaler']
 features      = bundle['features']
-cols_to_scalw = bundle['cols_to_scalw']
+cols_to_scale = bundle['cols_to_scale']
 dept_map_inv  = bundle['dept_map_inv']
 gender_map    = bundle['gender_map']
 temp_map      = bundle['temp_map']
@@ -127,7 +127,7 @@ with st.form("triage_form"):
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        fever            =st.chekbox() ... # TODO 1: Gunakan st.checkbox("🌡️  Fever")
+        fever            = ... # TODO 1: Gunakan st.checkbox("🌡️  Fever")
         cough            = ... # TODO 2: Gunakan st.checkbox("🤧  Cough")
     with c2:
         headache         = ... # TODO 3: Buat checkbox "🤕  Headache"
@@ -347,4 +347,3 @@ if submitted:
         </div>
         """, unsafe_allow_html=True)
     # endregion
-
