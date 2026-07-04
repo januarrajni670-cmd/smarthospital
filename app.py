@@ -127,8 +127,8 @@ with st.form("triage_form"):
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        fever            = ... # TODO 1: Gunakan st.checkbox("🌡️  Fever")
-        cough            = ... # TODO 2: Gunakan st.checkbox("🤧  Cough")
+        fever            = st.checkbox('Fever')
+        cough            = st.checkbox('cough.. 
     with c2:
         headache         = ... # TODO 3: Buat checkbox "🤕  Headache"
         chest_pain       = ... # TODO 4: Buat checkbox "💔  Chest Pain"
